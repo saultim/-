@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Textbook Exchange";
+}
+
+<div class="text-center">
+    <h1 class="display-4">📚 Textbook Exchange</h1>
+    <p class="lead">Обменяйся учебниками с другими студентами</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📖 Все учебники</h5>
+                    <p class="card-text">Посмотрите все доступные учебники</p>
+                    <a asp-controller="Books" asp-action="Index" class="btn btn-primary">Смотреть</a>
+                </div>
+            </div>
+        </div>
+        
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">➕ Добавить</h5>
+                        <p class="card-text">Добавьте свой учебник для обмена</p>
+                        <a asp-controller="Books" asp-action="Create" class="btn btn-success">Добавить</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📚 Мои учебники</h5>
+                        <p class="card-text">Управляйте своими учебниками</p>
+                        <a asp-controller="Books" asp-action="MyBooks" class="btn btn-info">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🔐 Вход</h5>
+                        <p class="card-text">Войдите в свой аккаунт</p>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-warning">Войти</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">📝 Регистрация</h5>
+                        <p class="card-text">Создайте новый аккаунт</p>
+                        <a asp-controller="Account" asp-action="Register" class="btn btn-secondary">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
